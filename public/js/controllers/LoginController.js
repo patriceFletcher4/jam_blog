@@ -1,31 +1,20 @@
-(function(){
-  angular.module('ngBlog', 'ngWeather', ngtodos)
-        .controller('SimpleController', SimpleController);
+(function() {
+  angular.module('jam')
+          .controller('LoginController', LoginController);
 
-  SimpleController.$inject = ['$scope', 'UserService', 'WeatherService', 'TodoService'];
+  LoginController.$inject = ['$scope', 'AuthService', '$location'];
 
-  function SimpleController($scope, UserService, WeatherService, TodoService){
-    $scope.message = 'Hello'
-    WeatherService.getDailyData(29, -82);
+  function LoginController($scope, AuthService, $location){
+    $scope.login = login;
 
-    UserService.getAllUsers()
-              .then(function(response){
-                console.log(response);
-              });
-    var userObj = {
-      firstName: 'Pat',
-      lastName: 'Nicky'
-      email: 'patnicky@dev.org'
-    };
-    UserService.createUser(userObj)
-              .then(function(response){
-                console.log(response);
-              });
-    var todos;
-    TodoService.readAll()
-    .then(function(){
-      todos = TodoService.todos
-      console.log(todos);
-    });
+    function login(user){
+      AuthService.login(user)
+            .then(function(){
+              $location.path('/');
+            })
+            .catch(function(err){
+              console.log(err);
+            });
+    }
   }
-})();
+}());

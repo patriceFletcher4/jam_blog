@@ -1,6 +1,6 @@
 
 (function() {
-  angular.module('ngBlog')
+  angular.module('jam')
         .config(RouterConfig);
 
   RouterConfig.$inject = ['$routeProvider'];
@@ -19,10 +19,6 @@
         templateUrl: 'html/views/signup.html',
         controller: 'SignupController'
       })
-      .when('/profile/:userId', {
-        templateUrl: 'html/views/profile.html',
-        controller: 'ProfileController'
-      })
       .when('/post/:postId', {
         templateUrl: 'html/views/post.html',
         controller: 'PostController'
@@ -34,6 +30,11 @@
       .when('/edit/:postId', {
         templateUrl: 'html/views/post-edit.html',
         controller: 'PostController'
+
+      })
+      .when('/daily', {
+        templateUrl: 'html/views/daily.html',
+        controller: 'DailyController'
       })
       .otherwise({
         redirectTo: '/'
