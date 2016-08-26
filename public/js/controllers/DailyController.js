@@ -14,8 +14,13 @@
       return WeatherService.weather;
     }, function(value){
       $scope.dailyData = value;
+    })
 
+    $scope.$watch(function(){
+      return GeoLocation.formattedAddress;
+    },function(value){
+      console.log("value: ", value);
+      $scope.formattedAddress = value;
     });
-
   }
 })();
