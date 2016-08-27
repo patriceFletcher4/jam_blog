@@ -5,7 +5,7 @@
   SimpleController.$inject = ['$scope', 'UserService', 'WeatherService', 'TodoService'];
 
   function SimpleController($scope, UserService, WeatherService, TodoService){
-    $scope.message = 'Hello'
+    $scope.message = 'Hello';
     WeatherService.getDailyData(29, -82);
 
     UserService.getAllUsers()
@@ -13,8 +13,8 @@
                 console.log(response);
               });
     var userObj = {
-      firstName: 'Pat',
-      lastName: 'Nicky'
+      firstName: firstName,
+      lastName: lastName,
       email: 'patnicky@dev.org'
     };
     UserService.createUser(userObj)
@@ -24,7 +24,7 @@
     var todos;
     TodoService.readAll()
     .then(function(){
-      todos = TodoService.todos
+      todos = TodoService.todos;
       console.log(todos);
     });
   }

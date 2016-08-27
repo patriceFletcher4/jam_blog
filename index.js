@@ -3,7 +3,6 @@ var server = express();
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var mongoose = require('mongoose');
-var app = angular.module('app', ['ngweather', 'ngtodos', 'ngblog']);
 
 
 var port = process.env.PORT || 8080;

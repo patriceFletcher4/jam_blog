@@ -1,19 +1,18 @@
 body {
-  background-image: url(http://www.best-wallpaper.de/grafiken/gros/weltall/erde/Florida.jpg);
+  background-image: url(http://wallpapercave.com/wp/4BYjOJF.jpg);
   font-family: georgia, cursive, serif, white;
-  color: white;
+  color: blue;
 }
 
-.container{
-  border: solid 5px blue;
-}
 
 .well{
   border: solid 6px blue;
-  background-color: black;
+  background-color: white;
   font-family: georgia, cursive, serif, white;
-  color: white;
+  color: blue;
 }
+
+
 @keyframes rotatefall {
   0%    { transform: rotateZ(0deg); }
   20%   { transform: rotateZ(10deg); animation-timing-function: ease-out;}

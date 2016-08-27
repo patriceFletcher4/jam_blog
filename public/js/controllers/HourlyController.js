@@ -1,11 +1,12 @@
+
 (function(){
   angular.module('jam')
-        .controller('DailyController', DailyController);
+        .controller('HourlyController', HourlyController);
 
-  DailyController.$inject = ['$scope', 'WeatherService', '$geolocation'];
+  HourlyController.$inject = ['$scope', 'WeatherService', '$geolocation'];
 
-  function DailyController($scope, WeatherService, $geolocation){
-    $scope.dailyData = WeatherService.weather;
+  function HourlyController($scope, WeatherService, $geolocation){
+    $scope.hourlyData = WeatherService.weather;
     $scope.summaryLookup = {
       'Drizzle': 'There will be some drizzle',
       'Partly Cloudy': 'There will be some clouds around in your area.'
@@ -13,7 +14,7 @@
     $scope.$watch(function(){
       return WeatherService.weather;
     }, function(value){
-      $scope.dailyData = value;
+      $scope.hourlyData = value;
     });
 
     $scope.$watch(function(){

@@ -7,6 +7,12 @@
 
   function AuthService($http, $window){
     var loginUrl = 'https://hidden-woodland-60294.herokuapp.com/';
+    var passphrase = 'Jesus is the center of my life I love him with all my heart and he loves me too';
+    var config = {
+      headers: {
+        'passphrase': passphrase
+      }
+    };
     var service = {
       currentUser: currentUser,
       saveToken: saveToken,
@@ -27,7 +33,7 @@
           id: payload._id,
           firstName: payload.firstName,
           lastName: payload.lastName
-        }
+        };
       }
     }
     function saveToken(token){
@@ -52,7 +58,7 @@
     }
 
     function login(user){
-      return $http.post(loginUrl, user)
+      return $http.post(loginUrl, user, config)
                   .then(function(response){
                     saveToken(response.data.token);
                     return response.data;

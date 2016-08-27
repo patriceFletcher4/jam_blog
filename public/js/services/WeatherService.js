@@ -6,7 +6,7 @@
 
 
     function WeatherService($http){
-    var passphrase = 'Jesus is the center of my life I love him with all my heart and he loves me too'
+    var passphrase = 'Jesus is the center of my life I love him with all my heart and he loves me too';
     var baseUrl = 'https://hidden-woodland-60294.herokuapp.com/';
     var config = {
       headers: {
@@ -25,8 +25,9 @@
       var url = baseUrl + 'forecast/hourly/'+ lat + ',' +lon;
       return $http.get(url, config)
             .then(function(response){
+              console.log(response);
             service.weather = response.data;
-            console.log(service.weather)
+            console.log(service.weather);
             });
     }
     function getMinutelyData(lat, lon){
@@ -34,7 +35,7 @@
       return $http.get(url, config)
                   .then(function(response){
                   service.weather = response.data;
-                  console.log(service.weather)
+                  console.log(service.weather);
                 });
     }
     function getDailyData(lat, lon){
@@ -42,7 +43,7 @@
       return $http.get(url, config)
                   .then(function(response){
                   service.weather = response.data;
-                  console.log(service.weather)
+                  console.log(service.weather);
                 });
     }
     }

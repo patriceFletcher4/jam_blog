@@ -8,6 +8,12 @@
           function TodoService($http){
             //do not forget the slash !!!!!
             //
+            var passphrase = 'Jesus is the center of my life I love him with all my heart and he loves me too';
+            var config = {
+              headers: {
+                'passphrase': passphrase
+              }
+            };
             var baseUrl = 'https://hidden-woodland-60294.herokuapp.com/';
             var o = {
               create: createTodo, //function
@@ -23,14 +29,14 @@
       var info = {
           description: desc
     };
-      return $http.post(baseUrl+'todos', info)
+      return $http.post(baseUrl+'todos', info, config)
                   .then(function(response){
           console.log('create', response);
                   getAll();
   });
   }
     function getAll(){
-      return $http.get(baseUrl + 'todos')
+      return $http.get(baseUrl + 'todos', config)
                   .then(function(response){
               o.todos = response.data;
   });
@@ -40,20 +46,20 @@
   //   isComplete: 'new complete status or at least the old one'
   // };
     function updateTodo(id, newTodo){
-      return $http.put(baseUrl+'todos/'+id, newTodo)
+      return $http.put(baseUrl+'todos/'+id, newTodo, config)
                   .then(function(response){
             console.log('update',response);
                   getAll();
     });
     }
     function deleteTodo(id){
-      return $http.delete(baseUrl+'todos/'+id)
+      return $http.delete(baseUrl+'todos/'+id, config)
                 .then(function(response){
             console.log('delete', response);
                   getAll();
-   })
+   });
   }
 
 
   }
-})()
+})();

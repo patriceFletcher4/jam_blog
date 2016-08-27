@@ -6,7 +6,7 @@
   HomeController.$inject = ['$scope', 'WeatherService', '$geolocation', 'PostService', 'TodoService'];
 
   function HomeController($scope, WeatherService, $geolocation, PostService, TodoService){
-    $scope.updateDaily = updateDaily;
+    $scope.updateHourly = updateHourly;
     $scope.latitude = 29;
     $scope.longitude = -82;
     $geolocation.getCurrentPosition({
@@ -16,8 +16,8 @@
             $scope.longitude = position.coords.longitude;
          });
 
-    function updateDaily(latitude, longitude){
-      WeatherService.getDailyData(latitude, longitude);
+    function updateHourly(latitude, longitude){
+      WeatherService.getHourlyData(latitude, longitude);
     }
 
   function getPosts(){
@@ -36,7 +36,7 @@
   var todos;
     TodoService.readAll()
               .then(function(){
-              todos = TodoService.todos
+              todos = TodoService.todos;
               console.log(todos);
             });
 

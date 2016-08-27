@@ -12,9 +12,9 @@
 function PostController($scope, PostService, AuthService, $location, $routeParams, UserService){
   $scope.createPost = createPost;
   $scope.updatePost = updatePost;
-  $scope.getAuthor = getAuthor
+  $scope.getAuthor = getAuthor;
 
-  $scope.posts = []
+  $scope.posts = [];
 
   getEditPost($routeParams.postId);
 
@@ -33,7 +33,7 @@ function getPosts(){
 }
 
 function createPost(post){
-  post.author = AuthService.currentUser().id
+  post.author = AuthService.currentUser().id;
   PostService.createPost(post)
             .then(function(response){
               $location.path('/profile/'+post.author);
@@ -51,7 +51,7 @@ function updatePost(post){
               })
               .catch(function(err){
                 console.log(err);
-              })
+              });
 }
 
 function getEditPost(postId){

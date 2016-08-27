@@ -1,0 +1,80 @@
+
+<div class="container">
+  <h1>Just About Me</h1>
+  <p> “A strong person is one who has weathered many storms without losing the goodness of their character." </p>
+  <br>
+  <div class="row">
+    <div class="col-md-5 col-md-offset-4">
+      <h5>Latitude: {{hourlyData.latitude}}, Longitude: {{hourlyData.longitude}}</h5>
+    </div>
+  </div>
+  <div class="row" ng-repeat='card in hourlyData.hourly.data track by $index' ng-if = "$index < 1">
+  <div class="col-md-6 col-md-offset-3 well">
+    <div class="row">
+      <div class="col-md-4">
+        <img ng-src="images/{{card.icon}}.png" alt="{{card.icon}}" style='width: 100px;'>
+      </div>
+      <div class="col-md-4">
+        <h3>Tempreture: {{card.temperature}}&deg;F</h3>
+        </div>
+      <div class="col-md-4">
+        <h4>{{card.time * 1000 | date: 'short'}}</h4>
+      </div>
+    </div>
+    <div class="row">
+     <h5>Precipitation Probability: {{ card.precipProbability * 100 | number:0 }} %</h5>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h5>Humidity: {{ card.humidity *100 | number:0 }} %</h5>
+      </div>
+      <div class="col-md-6">
+        <h3>{{ summaryLookup[card.summary] || card.summary }}</h3>
+      </div>
+    </div>
+    <div class="row">
+      <h5>Windspeed: {{ card.windSpeed }} mph</h5>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class='container' ng-controller='HomeController'>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="form-group">
+      <label>My Daily Task List:</label>
+      <input type="text" class="form-control" ng-model='description'>
+      <input type="text" class="form-control" ng-model='description'>
+      <input type="text" class="form-control" ng-model='description'>
+      <input type="text" class="form-control" ng-model='description'>
+      <input type="text" class="form-control" ng-model='description'>
+      <input type="text" class="form-control" ng-model='description'>
+      <input type="text" class="form-control" ng-model='description'>
+      <input type="text" class="form-control" ng-model='description'>
+      <input type="text" class="form-control" ng-model='description'>
+      <input type="text" class="form-control" ng-model='description'>
+    </div>
+  </div>
+  <div class="col-md-8 col-md-offset-2">
+    <button class="btn btn-warning btn-block" ng-click='create(description)'>Create</button>
+  </div>
+</div>
+
+<div class="row" ng-repeat='eachItem in todos'>
+  <div class="jumbotron" data-id={{eachItem.id}}>
+    <button class="btn btn-sm btn-danger pull-right" ng-click='delete(eachItem.id)'>X</button>
+    <h1 ng-hide='eachItem.editing'>{{eachItem.description}}</h1>
+    <div class="form-group" ng-show='eachItem.editing'>
+      <input type="text" ng-model='eachItem.description' class='form-control'>
+    </div>
+    <p><strong>isComplete:</strong> {{eachItem.isComplete}}</p>
+    <div ng-show='eachItem.editing'>
+      <input type="radio" ng-value='true' ng-model='eachItem.isComplete'> True <br>
+      <input type="radio" ng-value='false' ng-model='eachItem.isComplete'> False <br>
+    </div>
+    <button ng-hide='eachItem.editing' class="btn btn-warning pull-right" ng-click='edit(eachItem)'>Edit</button>
+    <button ng-show='eachItem.editing' class="btn btn-success pull-right" ng-click='update(eachItem)'>Update</button>
+  </div>
+</div>
+</div>
